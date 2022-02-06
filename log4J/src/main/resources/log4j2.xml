@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+	<Appenders>
+		<RollingFile name ="DailyRollingFileAppender"
+			filePattern="logs/${sys:logFilename}_%d{yyyy-MM-dd}.log">
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1"/>
+			</Policies>
+		</RollingFile>
+		<Console name="ConsoleAppender" target="SYSTEM_OUT">
+			<PatternLayout pattern="%m%n" />
+		</Console>
+	</Appenders>
+	<Loggers>
+		<Logger name ="DAILY_ROLLING_FILE_LOGGER" level="ALL" additivity="ALL">
+			<AppenderRef ref="DailyRollingFileAppender" />
+		</Logger>
+		<Root level="TRACE">
+			<AppenderRef ref="ConsoleAppender" />
+		</Root>
+	</Loggers>
+</Configuration>
